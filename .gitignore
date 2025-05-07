@@ -1,0 +1,19 @@
+# Ignore Python virtual environments
+env/
+__pycache__/
+*.pyc
+*.db
+*.sqlite3
+
+# Ignore staticfiles collected during deployment
+staticfiles/
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore local settings
+*.log
+*.pot
+*.mo
+*.po
