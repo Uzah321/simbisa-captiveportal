@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In - Simbisa Brands</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffcccc, #f56767);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            padding: 40px 30px;
+            max-width: 420px;
+            width: 95%;
+            text-align: center;
+            animation: fadeInUp 1.2s ease-out;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2::before,
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ccc);
+            margin: 0 10px;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 95%;
+            padding: 14px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 10px;
+            background-color: #f1f1f1;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type=text]:focus,
+        input[type=password]:focus {
+            background-color: #e9ecef;
+            box-shadow: 0 0 8px rgba(217, 31, 38, 0.2);
+        }
+
+        button {
+            background: linear-gradient(to right, #d91f26, #b3171e);
+            color: white;
+            border: none;
+            padding: 14px 26px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 16px rgba(217, 31, 38, 0.3);
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #b3171e, #991317);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(217, 31, 38, 0.4);
+        }
+
+        .error {
+            color: #c0392b;
+            font-weight: 500;
+            margin-top: -10px;
+            margin-bottom: 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="{% static 'portal/logo.png' %}" alt="Simbisa Brands Logo" class="logo">
+    <h2>🔐 Sign In</h2>
+    <form method="post" action="{% url 'login_view' %}">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <button type="submit">Log In</button>
+    </form>
+</div>
+</body>
+</html>
